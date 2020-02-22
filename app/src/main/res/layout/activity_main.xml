@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/flashcard_question"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:text="Barak Obama"
         android:textSize="40sp"
