@@ -6,9 +6,7 @@
 This week we started by building our Flashcard app and focus on how to add and customize views to be displayed on the screen. The end goal for this week is to have a basic Flashcard app that can display a question, and on tap display the answer to the question. 
 
 ### App Walk-though
-`TODO://` Add the URL to your animated app walk-though `gif` in the image tag below. Make sure the gif actually renders and animates when viewing this README. (☝️ Remove this paragraph after after adding gif)
-
-<img src="YOUR_GIF_URL_HERE" width=200><br>
+<img src=FlashcardAppPt1.gif width=200><br>
 
 ## Required
 - [X] Create New Project in Android Studio
