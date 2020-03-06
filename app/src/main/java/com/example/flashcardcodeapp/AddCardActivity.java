@@ -36,7 +36,7 @@ public class AddCardActivity extends AppCompatActivity {
                     setResult(RESULT_OK, data); //set result code
 
                     finish(); //closes activity and pass data to MainActivity
-                
+
 
             }
         });

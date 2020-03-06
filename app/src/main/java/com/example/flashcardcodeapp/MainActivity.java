@@ -44,17 +44,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == 100){
-            //this 100 needs to match the original 100 set at startActivityForResult
-            String newQuestion = data.getExtras().getString("FCQuestion"); //
-            String newAnswer = data.getExtras().getString("FCAnswer"); //
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            TextView currentFCQuestion = findViewById(R.id.flashcard_question);
-            currentFCQuestion.setText(newQuestion);
+        super.onActivityResult(requestCode, resultCode, data);
 
-            TextView currentFCAnswer = findViewById(R.id.flashcard_answer);
-            currentFCAnswer.setText(newAnswer);
+        if(data != null) {
+
+            if (requestCode == 100 && resultCode == RESULT_OK) {
+
+                //this 100 needs to match the original 100 set at startActivityForResult
+                String newQuestion = data.getExtras().getString("FCQuestion"); //
+                String newAnswer = data.getExtras().getString("FCAnswer"); //
+
+                TextView currentFCQuestion = findViewById(R.id.flashcard_question);
+                currentFCQuestion.setText(newQuestion);
+
+                TextView currentFCAnswer = findViewById(R.id.flashcard_answer);
+                currentFCAnswer.setText(newAnswer);
+            }
 
         }
     }
