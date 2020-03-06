@@ -18,8 +18,13 @@ public class AddCardActivity extends AppCompatActivity {
             public void onClick(View v){
                finish();
             }
-
         });
 
+        findViewById(R.id.flashcard_download).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
