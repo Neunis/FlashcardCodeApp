@@ -14,27 +14,30 @@ public class AddCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
 
-        findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.cancelButton).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-               finish();
+            public void onClick(View v) {
+                finish();
             }
         });
 
         findViewById(R.id.flashcard_download).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String questionInput = (((EditText) findViewById(R.id.editFCQuestion)).getText().toString());
-                String questionOutput = (((EditText) findViewById(R.id.editFCAnswer)).getText().toString());
 
-                Intent data = new Intent(); //creates a new intent
 
-                data.putExtra("FCQuestion", questionInput);
-                data.putExtra("FCAnswer", questionOutput);
+                    String questionInput = (((EditText) findViewById(R.id.editFCQuestion)).getText().toString());
+                    String questionOutput = (((EditText) findViewById(R.id.editFCAnswer)).getText().toString());
 
-                setResult(RESULT_OK, data); //set result code
+                    Intent data = new Intent(); //creates a new intent
 
-                finish(); //closes activity and pass data to MainActivity
+                    data.putExtra("FCQuestion", questionInput);
+                    data.putExtra("FCAnswer", questionOutput);
+                    setResult(RESULT_OK, data); //set result code
+
+                    finish(); //closes activity and pass data to MainActivity
+                
+
             }
         });
     }
