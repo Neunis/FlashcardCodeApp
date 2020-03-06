@@ -2,6 +2,7 @@ package com.example.flashcardcodeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
                 findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
             }
-
-
         });
 
         findViewById(R.id.flashcard_answer).setOnClickListener(new View.OnClickListener() {
@@ -29,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
             }
 
+
+        });
+
+        findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
+                startActivity(intent);
+            }
 
         });
     }
