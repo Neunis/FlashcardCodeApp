@@ -48,10 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(data != null) {
+        if (requestCode == 100 && resultCode == RESULT_OK) {
 
-            if (requestCode == 100 && resultCode == RESULT_OK) {
-
+            if(data != null) {
                 //this 100 needs to match the original 100 set at startActivityForResult
                 String newQuestion = data.getExtras().getString("FCQuestion"); //
                 String newAnswer = data.getExtras().getString("FCAnswer"); //
