@@ -48,19 +48,19 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 100 && resultCode == RESULT_OK) {
+        if (requestCode == 100) {
+                if(data != null) {
+                    //this 100 needs to match the original 100 set at startActivityForResult
+                    String newQuestion = data.getExtras().getString("FCQuestion");
+                    String newAnswer = data.getExtras().getString("FCAnswer");
 
-            if(data != null) {
-                //this 100 needs to match the original 100 set at startActivityForResult
-                String newQuestion = data.getExtras().getString("FCQuestion"); //
-                String newAnswer = data.getExtras().getString("FCAnswer"); //
+                    TextView currentFCQuestion = findViewById(R.id.flashcard_question);
+                    currentFCQuestion.setText(newQuestion);
 
-                TextView currentFCQuestion = findViewById(R.id.flashcard_question);
-                currentFCQuestion.setText(newQuestion);
+                    TextView currentFCAnswer = findViewById(R.id.flashcard_answer);
+                    currentFCAnswer.setText(newAnswer);
+                }
 
-                TextView currentFCAnswer = findViewById(R.id.flashcard_answer);
-                currentFCAnswer.setText(newAnswer);
-            }
 
         }
     }

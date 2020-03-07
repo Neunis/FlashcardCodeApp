@@ -25,7 +25,6 @@ public class AddCardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                     String questionInput = (((EditText) findViewById(R.id.editFCQuestion)).getText().toString());
                     String questionOutput = (((EditText) findViewById(R.id.editFCAnswer)).getText().toString());
 
@@ -34,7 +33,6 @@ public class AddCardActivity extends AppCompatActivity {
                     data.putExtra("FCQuestion", questionInput);
                     data.putExtra("FCAnswer", questionOutput);
                     setResult(RESULT_OK, data); //set result code
-
                     finish(); //closes activity and pass data to MainActivity
 
 
