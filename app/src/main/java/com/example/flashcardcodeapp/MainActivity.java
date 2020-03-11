@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         //db var initialization
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
-        //local var with list of flashcards
+        //local var with list of flashcards, saves data to the database (db)
         allFlashcards = flashcardDatabase.getAllCards();
 
         //fxn checks db to see if there are any saved flashcards b4 showing default
@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        allFlashcards = flashcardDatabase.getAllCards();
-
         if (requestCode == 100) {
                 if(data != null) {
                     //this 100 needs to match the original 100 set at startActivityForResult
@@ -74,14 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     String newAnswer = data.getExtras().getString("FCAnswer");
 
                     ((TextView) findViewById(R.id.flashcard_question)).setText(newQuestion);
-
                     ((TextView) findViewById(R.id.flashcard_answer)).setText(newAnswer);
 
                     flashcardDatabase.insertCard(new Flashcard(newQuestion, newAnswer));
-
-                    allFlashcards = flashcardDatabase.getAllCards();
-
-
 
                 }
 
