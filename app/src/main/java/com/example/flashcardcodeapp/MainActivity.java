@@ -7,13 +7,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    FlashcardDatabase flashcardDatabase;
+    List<Flashcard> allFlashcards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //db var initialization
+        flashcardDatabase = new FlashcardDatabase(getApplicationContext());
+        //local var with list of flashcards
+        allFlashcards = flashcardDatabase.getAllCards();
+
+        //fxn checks db to see if there are any saved flashcards b4 showing default
+        if (allFlashcards != null && allFlashcards.size() > 0) {
+            ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(0).getQuestion());
+            ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(0).getAnswer());
+
+        }
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener(){
+
+        findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddCardActivity.class);
                 startActivityForResult(intent, 100);
             }
@@ -48,17 +65,24 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+        allFlashcards = flashcardDatabase.getAllCards();
+
         if (requestCode == 100) {
                 if(data != null) {
                     //this 100 needs to match the original 100 set at startActivityForResult
                     String newQuestion = data.getExtras().getString("FCQuestion");
                     String newAnswer = data.getExtras().getString("FCAnswer");
 
-                    TextView currentFCQuestion = findViewById(R.id.flashcard_question);
-                    currentFCQuestion.setText(newQuestion);
+                    ((TextView) findViewById(R.id.flashcard_question)).setText(newQuestion);
 
-                    TextView currentFCAnswer = findViewById(R.id.flashcard_answer);
-                    currentFCAnswer.setText(newAnswer);
+                    ((TextView) findViewById(R.id.flashcard_answer)).setText(newAnswer);
+
+                    flashcardDatabase.insertCard(new Flashcard(newQuestion, newAnswer));
+
+                    allFlashcards = flashcardDatabase.getAllCards();
+
+
+
                 }
 
 
