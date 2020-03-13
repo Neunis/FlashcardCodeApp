@@ -55,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
                     }
 
+                    //creates a new record in db
                     flashcardDatabase.insertCard(new Flashcard(newQuestion, newAnswer));
+                    //updates copy (temp) of db
+                    allFlashcards = flashcardDatabase.getAllCards();
+
 
                 }
 
