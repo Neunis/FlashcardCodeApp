@@ -8,11 +8,11 @@ Flash cards can now be viewed and new ones can now be created, but every time yo
 #### Goals: Create and view database for flashcards  
 
 ### App Walk-though
-<img src=FCAppPt2.gif width=200><br>
+<img src=FCAppPt3.gif width=200><br>
 
 ## Required
-- [ ] User can create a card and still see their created card when the app is relaunched.
-- [ ] User can create muliple cards and browse through all created cards
+- [X] User can create a card and still see their created card when the app is relaunched.
+- [X] User can create muliple cards and browse through all created cards
 
 ## Optional
 - [ ] User can delete a card and no longer see it in their deck anymore
