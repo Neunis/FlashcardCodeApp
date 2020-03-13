@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     //functions for flashcard in general (view, etc.)
     private void flashcardView(){
+
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
                 findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
             }
-
-
         });
+
     }
 
     //functions for button actions
     private void addButtonAction(){
+        //initiates a new activity and send a signal expecting a response
         findViewById(R.id.addButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
                 //sets Q&A TextViews w/ data from the db
                 ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                 ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
+
+                //makes sure the next button is set to the right format of question first then answer
+                if (findViewById(R.id.flashcard_question).getVisibility() == View.INVISIBLE) {
+                    findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                    findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                }
 
             }
         });
