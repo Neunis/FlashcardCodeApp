@@ -50,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
                     ((TextView) findViewById(R.id.flashcard_question)).setText(newQuestion);
                     ((TextView) findViewById(R.id.flashcard_answer)).setText(newAnswer);
 
+                    if (findViewById(R.id.flashcard_question).getVisibility() == View.INVISIBLE) {
+                        findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                        findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                    }
+
+                    //creates a new record in db
                     flashcardDatabase.insertCard(new Flashcard(newQuestion, newAnswer));
+                    //updates copy (temp) of db
+                    allFlashcards = flashcardDatabase.getAllCards();
+
 
                 }
 
