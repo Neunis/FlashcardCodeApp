@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                 final Animation leftOutAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
                 final Animation rightInAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
 
-                //discard old question by going to the left
                 leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -145,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         // this method is called when the animation is finished playing
-                        findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
+                        findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
                     }
 
                     @Override
@@ -154,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
-
+                //discard old question by going to the left
+                findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
 
                 //progress to next card with addition of pointer index
                 currentCardDisplayedIndex++;
