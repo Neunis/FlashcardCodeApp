@@ -8,7 +8,7 @@ At this stage of the application custom animations and styles will be implemente
 #### Goals: Understand how and when to implement different types of animations within your app and style my app
 
 ### App Walk-though
-<img src=FCAppPt3.gif width=200><br>
+<img src=FCAppPt4.gif width=200><br>
 
 ## Required
 - [X] User sees a transition animation when going from the main screen to the add card screen.
