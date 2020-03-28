@@ -77,33 +77,33 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
-                findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
+                View answerSideView = findViewById(R.id.flashcard_answer);
+                View questionSideView = findViewById(R.id.flashcard_question);
+
+            // get the center for the clipping circle
+                int cx = answerSideView.getWidth() / 2;
+                int cy = answerSideView.getHeight() / 2;
+
+            // get the final radius for the clipping circle
+                float finalRadius = (float) Math.hypot(cx, cy);
+
+            // create the animator for this view (the start radius is zero)
+                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+
+            // hide the question and show the answer to prepare for playing the animation!
+                questionSideView.setVisibility(View.INVISIBLE);
+                answerSideView.setVisibility(View.VISIBLE);
+
+                anim.setDuration(3000);
+                anim.start();
             }
         });
 
         findViewById(R.id.flashcard_answer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                View answerSideView = findViewById(R.id.flashcard_answer);
-                View questionSideView = findViewById(R.id.flashcard_question);
-
-// get the center for the clipping circle
-                int cx = answerSideView.getWidth() / 2;
-                int cy = answerSideView.getHeight() / 2;
-
-// get the final radius for the clipping circle
-                float finalRadius = (float) Math.hypot(cx, cy);
-
-// create the animator for this view (the start radius is zero)
-                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
-
-// hide the question and show the answer to prepare for playing the animation!
-                questionSideView.setVisibility(View.INVISIBLE);
-                answerSideView.setVisibility(View.VISIBLE);
-
-                anim.setDuration(3000);
-                anim.start();
+                findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
             }
         });
 
